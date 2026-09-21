@@ -23,7 +23,6 @@
     .no-print { display: none !important; }
     html, body { background: #fff; }
     .shell { background: #fff !important; min-height: 0 !important; counter-reset: sec; }
-    header { position: static !important; border-bottom: none !important; background: #fff !important; }
     @page { margin: 12mm; }
 
     section { padding-left: 0 !important; padding-right: 0 !important; }
@@ -56,7 +55,7 @@
     <div style="height:3px;background:var(--color-accent);width:{{ progress }}"></div>
   </div>
 
-  <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+  <header class="no-print" style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
     <div style="max-width:1040px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:20px">
       <a href="#top" style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--color-text);margin-right:auto">Marcus Lindwall</a>
       <nav class="no-print" style="display:flex;gap:22px;align-items:center">
