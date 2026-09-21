@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet data-dc-atomics>
+<title>Marcus Lindwall — Senior Software Developer</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
 <script src="bundle.js"></script>
@@ -17,23 +18,56 @@
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent); }
   ::selection { background: var(--color-accent-200); }
+
+  @media print {
+    .no-print { display: none !important; }
+    html, body { background: #fff; }
+    .shell { background: #fff !important; min-height: 0 !important; counter-reset: sec; }
+    @page { margin: 12mm; }
+
+    section { padding-left: 0 !important; padding-right: 0 !important; }
+    section#top { padding: 0 0 16px !important; }
+    section#top h1 { font-size: 34px !important; margin-bottom: 12px !important; }
+    section#experience, section#skills { padding-bottom: 20px !important; }
+
+    /* Approach is dropped in print, so the numbers left behind would start at 02. */
+    section#experience, section#skills { counter-increment: sec; }
+    .secnum { font-size: 0 !important; }
+    .secnum::before { font-size: 13px; content: counter(sec, decimal-leading-zero); }
+
+    article { gap: 8px 28px !important; padding: 12px 0 !important; }
+    article > div:first-child { flex: 0 0 160px !important; }
+    article > div:first-child p { font-size: 13px !important; }
+    .tagrow { break-inside: avoid-page; }
+
+    h1, h2, h3, h4 { break-after: avoid-page; }
+    h3 { font-size: 20px !important; }
+    h4 { font-size: 15px !important; }
+    .no-break { break-inside: avoid-page; padding-top: 8px !important; margin-bottom: 10px !important; }
+    li { break-inside: avoid-page; font-size: 13px !important; line-height: 1.45 !important; }
+    p { orphans: 3; widows: 3; }
+  }
 </style>
 </helmet>
-<div style="min-height:100vh;background:var(--color-bg)">
+<div class="shell" style="min-height:100vh;background:var(--color-bg)">
 
-  <div style="position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:transparent">
+  <div class="no-print" style="position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:transparent">
     <div style="height:3px;background:var(--color-accent);width:{{ progress }}"></div>
   </div>
 
-  <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
+  <header class="no-print" style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
     <div style="max-width:1040px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:20px">
       <a href="#top" style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--color-text);margin-right:auto">Marcus Lindwall</a>
-      <nav style="display:flex;gap:22px;align-items:center">
+      <nav class="no-print" style="display:flex;gap:22px;align-items:center">
         <a href="#approach" style="{{ nav.approach }}" style-hover="color:var(--color-accent)">Approach</a>
         <a href="#experience" style="{{ nav.experience }}" style-hover="color:var(--color-accent)">Experience</a>
         <a href="#skills" style="{{ nav.skills }}" style-hover="color:var(--color-accent)">Skills</a>
       </nav>
-      <button class="btn btn-primary" onClick="{{ copyEmail }}" style="justify-content:flex-start;gap:8px;min-width:172px">{{ copyLabel }}</button>
+      <button class="btn btn-secondary no-print" onClick="{{ downloadPdf }}" style="gap:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download PDF
+      </button>
+      <button class="btn btn-primary no-print" onClick="{{ copyEmail }}" style="justify-content:flex-start;gap:8px;min-width:172px">{{ copyLabel }}</button>
     </div>
   </header>
 
@@ -41,7 +75,7 @@
     <p style="font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Senior Software Developer · Stockholm</p>
     <h1 style="font-size:clamp(46px,8.5vw,92px);line-height:0.96;letter-spacing:-0.035em;margin:0 0 28px;max-width:14ch">Marcus Lindwall</h1>
     <p style="font-size:20px;line-height:1.45;max-width:62ch;margin:0 0 20px;text-wrap:pretty">Nine years building backend systems for large organisations, seven of them at Volvo Cars in Electrification — most of that in public charging, and more recently in home energy management.</p>
-    <p style="font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 36px;color:var(--color-neutral-800);text-wrap:pretty">I care about code that is still readable and safe to change years after it ships, and I use AI tooling to get there faster without giving that up. I look for product spaces with real stakes — work where the outcome is worth the engineering.</p>
+    <p class="no-print" style="font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 36px;color:var(--color-neutral-800);text-wrap:pretty">I care about code that is still readable and safe to change years after it ships, and I use AI tooling to get there faster without giving that up. I look for product spaces with real stakes — work where the outcome is worth the engineering.</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--color-neutral-700);border-top:2px solid var(--color-divider);padding-top:18px">
       <a href="mailto:marcus@lindwall.info" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><rect width="20" height="16" x="2" y="4"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>marcus@lindwall.info</a>
       <a href="https://www.linkedin.com/in/marcus-lindwall-ba0678111" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>linkedin.com/in/marcus-lindwall</a>
@@ -50,9 +84,9 @@
     </div>
   </section>
 
-  <section id="approach" style="max-width:1040px;margin:0 auto;padding:0 28px 64px;scroll-margin-top:80px">
+  <section id="approach" class="no-print" style="max-width:1040px;margin:0 auto;padding:0 28px 64px;scroll-margin-top:80px">
     <div style="display:flex;align-items:baseline;gap:14px;border-top:2px solid var(--color-divider);padding-top:16px;margin-bottom:28px">
-      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">01</span></sc-if>
+      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">01</span></sc-if>
       <h2 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin:0;font-weight:600">Approach</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 36px">
@@ -73,7 +107,7 @@
 
   <section id="experience" style="max-width:1040px;margin:0 auto;padding:0 28px 64px;scroll-margin-top:80px">
     <div style="display:flex;align-items:baseline;gap:14px;border-top:2px solid var(--color-divider);padding-top:16px;margin-bottom:8px">
-      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">02</span></sc-if>
+      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">02</span></sc-if>
       <h2 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin:0;font-weight:600">Experience</h2>
     </div>
 
@@ -85,7 +119,7 @@
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Senior Software Developer</h3>
         <p style="font-size:14px;margin:0 0 18px;color:var(--color-accent-700)">Electrification</p>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Home Energy Management</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2025 — Present</span>
@@ -96,7 +130,7 @@
             <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Consolidated eligibility and access rules that had been scattered across the codebase into one predictable funnel — logic that can now be reasoned about, tested and changed safely.</span></li>
           </ul>
         </div>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Public Charging</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2023 — 2025</span>
@@ -110,7 +144,7 @@
         </div>
         <p style="font-size:14px;line-height:1.55;margin:0 0 16px;color:var(--color-neutral-700)">Services run in Docker and Kubernetes on Azure, with PostgreSQL for persistence.</p>
         <sc-if value="{{ showTechTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
           <span class="tag tag-outline">Java</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">Kafka</span><span class="tag tag-outline">Kubernetes</span><span class="tag tag-outline">Azure</span><span class="tag tag-outline">AWS</span><span class="tag tag-outline">PostgreSQL</span><span class="tag tag-outline">Docker</span>
         </div>
         </sc-if>
@@ -125,7 +159,7 @@
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Software Developer</h3>
         <p style="font-size:14px;margin:0 0 18px;color:var(--color-accent-700)">Electrification — Public Charging</p>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Public charging in the Volvo app</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2020 — 2022</span>
@@ -136,7 +170,7 @@
             <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Built an internal CMS in React and Next.js so app developers and QA engineers could manage test conditions on their own, with a REST API behind it that let QA drive those conditions from their automated suites.</span></li>
           </ul>
         </div>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Recharge</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2019 — 2021</span>
@@ -149,7 +183,7 @@
         </div>
         <p style="font-size:14px;line-height:1.55;margin:0 0 16px;color:var(--color-neutral-700)">Services ran in Docker and Kubernetes on AWS, on a mix of Spring Boot and Dropwizard.</p>
         <sc-if value="{{ showTechTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
           <span class="tag tag-outline">Java</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">Dropwizard</span><span class="tag tag-outline">Kubernetes</span><span class="tag tag-outline">AWS</span><span class="tag tag-outline">PostgreSQL</span><span class="tag tag-outline">React</span>
         </div>
         </sc-if>
@@ -171,7 +205,7 @@
           <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Started via a talent programme, rotating across domains and spending time with customer care and field service — useful grounding for systems whose output ends in a physical install.</span></li>
         </ul>
         <sc-if value="{{ showTechTags }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
           <span class="tag tag-outline">Java</span><span class="tag tag-outline">Kotlin</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">SQL</span><span class="tag tag-outline">React</span>
         </div>
         </sc-if>
@@ -195,7 +229,7 @@
 
   <section id="skills" style="max-width:1040px;margin:0 auto;padding:0 28px 72px;scroll-margin-top:80px">
     <div style="display:flex;align-items:baseline;gap:14px;border-top:2px solid var(--color-divider);padding-top:16px;margin-bottom:28px">
-      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">03</span></sc-if>
+      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">03</span></sc-if>
       <h2 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin:0;font-weight:600">Skills</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 32px">
@@ -228,7 +262,7 @@
     </div>
   </section>
 
-  <footer style="background:var(--color-accent);color:#fff">
+  <footer class="no-print" style="background:var(--color-accent);color:#fff">
     <div style="max-width:1040px;margin:0 auto;padding:64px 28px 56px">
       <p style="font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-0.03em;font-family:var(--font-heading);font-weight:800;margin:0 0 32px;max-width:26ch;text-wrap:pretty">Not looking, but always open to an interesting problem.</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px 32px;font-size:17px;border-top:2px solid rgba(255,255,255,0.45);padding-top:22px">
@@ -341,11 +375,16 @@ class Component extends DCLogic {
     else done();
   };
 
+  downloadPdf = () => {
+    window.print();
+  };
+
   renderVals() {
     return {
       progress: this.state.progress,
       copyLabel: this.state.copied ? 'Copied to clipboard' : 'Copy email address',
       copyEmail: this.copyEmail,
+      downloadPdf: this.downloadPdf,
       showTechTags: this.props.showTechTags ?? true,
       sectionNumbers: this.props.sectionNumbers ?? true,
       nav: {
