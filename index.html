@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet data-dc-atomics>
+<title>Marcus Lindwall — Senior Software Developer</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
 <script src="bundle.js"></script>
@@ -17,23 +18,47 @@
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent); }
   ::selection { background: var(--color-accent-200); }
+
+  @media print {
+    .no-print { display: none !important; }
+    html, body { background: #fff; }
+    header { position: static !important; border-bottom: none !important; }
+    h1, h2, h3, h4 { break-after: avoid-page; }
+    .no-break { break-inside: avoid-page; }
+    li { break-inside: avoid-page; }
+    p { orphans: 3; widows: 3; }
+    @page { margin: 14mm; }
+
+    section#top { padding: 0 0 20px !important; }
+    section#top h1 { font-size: 38px !important; margin-bottom: 14px !important; }
+    section#approach, section#experience, section#skills { padding-bottom: 24px !important; }
+    article { padding: 14px 0 !important; }
+    .no-break { padding-top: 8px !important; margin-bottom: 10px !important; }
+    h3 { font-size: 19px !important; }
+    h4 { font-size: 14px !important; }
+    li { font-size: 12.5px !important; line-height: 1.4 !important; }
+  }
 </style>
 </helmet>
 <div style="min-height:100vh;background:var(--color-bg)">
 
-  <div style="position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:transparent">
+  <div class="no-print" style="position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:transparent">
     <div style="height:3px;background:var(--color-accent);width:{{ progress }}"></div>
   </div>
 
   <header style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
     <div style="max-width:1040px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:20px">
       <a href="#top" style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--color-text);margin-right:auto">Marcus Lindwall</a>
-      <nav style="display:flex;gap:22px;align-items:center">
+      <nav class="no-print" style="display:flex;gap:22px;align-items:center">
         <a href="#approach" style="{{ nav.approach }}" style-hover="color:var(--color-accent)">Approach</a>
         <a href="#experience" style="{{ nav.experience }}" style-hover="color:var(--color-accent)">Experience</a>
         <a href="#skills" style="{{ nav.skills }}" style-hover="color:var(--color-accent)">Skills</a>
       </nav>
-      <button class="btn btn-primary" onClick="{{ copyEmail }}" style="justify-content:flex-start;gap:8px;min-width:172px">{{ copyLabel }}</button>
+      <button class="btn btn-secondary no-print" onClick="{{ downloadPdf }}" style="gap:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download PDF
+      </button>
+      <button class="btn btn-primary no-print" onClick="{{ copyEmail }}" style="justify-content:flex-start;gap:8px;min-width:172px">{{ copyLabel }}</button>
     </div>
   </header>
 
@@ -85,7 +110,7 @@
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Senior Software Developer</h3>
         <p style="font-size:14px;margin:0 0 18px;color:var(--color-accent-700)">Electrification</p>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Home Energy Management</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2025 — Present</span>
@@ -96,7 +121,7 @@
             <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Consolidated eligibility and access rules that had been scattered across the codebase into one predictable funnel — logic that can now be reasoned about, tested and changed safely.</span></li>
           </ul>
         </div>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Public Charging</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2023 — 2025</span>
@@ -125,7 +150,7 @@
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Software Developer</h3>
         <p style="font-size:14px;margin:0 0 18px;color:var(--color-accent-700)">Electrification — Public Charging</p>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Public charging in the Volvo app</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2020 — 2022</span>
@@ -136,7 +161,7 @@
             <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Built an internal CMS in React and Next.js so app developers and QA engineers could manage test conditions on their own, with a REST API behind it that let QA drive those conditions from their automated suites.</span></li>
           </ul>
         </div>
-        <div style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
+        <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Recharge</h4>
             <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2019 — 2021</span>
@@ -228,7 +253,7 @@
     </div>
   </section>
 
-  <footer style="background:var(--color-accent);color:#fff">
+  <footer class="no-print" style="background:var(--color-accent);color:#fff">
     <div style="max-width:1040px;margin:0 auto;padding:64px 28px 56px">
       <p style="font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-0.03em;font-family:var(--font-heading);font-weight:800;margin:0 0 32px;max-width:26ch;text-wrap:pretty">Not looking, but always open to an interesting problem.</p>
       <div style="display:flex;flex-wrap:wrap;gap:12px 32px;font-size:17px;border-top:2px solid rgba(255,255,255,0.45);padding-top:22px">
@@ -341,11 +366,16 @@ class Component extends DCLogic {
     else done();
   };
 
+  downloadPdf = () => {
+    window.print();
+  };
+
   renderVals() {
     return {
       progress: this.state.progress,
       copyLabel: this.state.copied ? 'Copied to clipboard' : 'Copy email address',
       copyEmail: this.copyEmail,
+      downloadPdf: this.downloadPdf,
       showTechTags: this.props.showTechTags ?? true,
       sectionNumbers: this.props.sectionNumbers ?? true,
       nav: {
