@@ -289,12 +289,18 @@ class Component extends DCLogic {
         - (scroller === doc ? window.innerHeight : scroller.clientHeight);
       const pct = max > 8 ? Math.max(0, Math.min(100, (top / max) * 100)) : 0;
       let active = 'top';
+      let last = 'top';
       for (const id of ['approach', 'experience', 'skills']) {
         const el = document.getElementById(id);
         if (!el) continue;
         const r = el.getBoundingClientRect();
-        if (r.height > 0 && r.top <= 140) active = id;
+        if (r.height === 0) continue;
+        last = id;
+        if (r.top <= 140) active = id;
       }
+      // A trailing section shorter than the viewport never reaches the 140px
+      // line, so at the end of the scroll range the last one is the current one.
+      if (max > 8 && max - top <= 2) active = last;
       if (pct.toFixed(1) + '%' !== this.state.progress || active !== this.state.active) {
         this.setState({ progress: pct.toFixed(1) + '%', active });
       }
