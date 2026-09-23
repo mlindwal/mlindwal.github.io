@@ -19,6 +19,17 @@
   a:hover { color: var(--color-accent); }
   ::selection { background: var(--color-accent-200); }
 
+  .btn .hdr-icon { display: none; }
+  @media (max-width: 839px) {
+    .btn.hdr-btn { min-width: 0 !important; width: 38px; height: 38px; padding: 0; justify-content: center !important; }
+    .btn .hdr-icon { display: block; }
+    .hdr-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  }
+  @media (max-width: 579px) {
+    .hdr { padding-top: 10px !important; padding-bottom: 10px !important; gap: 10px 12px !important; }
+    .hdr-nav { order: 3; flex-basis: 100%; }
+  }
+
   @media print {
     .no-print { display: none !important; }
     html, body { background: #fff; }
@@ -56,18 +67,22 @@
   </div>
 
   <header class="no-print" style="position:sticky;top:0;z-index:50;background:var(--color-bg);border-bottom:2px solid var(--color-divider)">
-    <div style="max-width:1040px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:20px">
+    <div class="hdr" style="max-width:1040px;margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:20px">
       <a href="#top" style="font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--color-text);margin-right:auto">Marcus Lindwall</a>
-      <nav class="no-print" style="display:flex;gap:22px;align-items:center">
+      <nav class="hdr-nav" style="display:flex;gap:22px;align-items:center">
         <a href="#approach" style="{{ nav.approach }}" style-hover="color:var(--color-accent)">Approach</a>
         <a href="#experience" style="{{ nav.experience }}" style-hover="color:var(--color-accent)">Experience</a>
         <a href="#skills" style="{{ nav.skills }}" style-hover="color:var(--color-accent)">Skills</a>
       </nav>
-      <button class="btn btn-secondary no-print" onClick="{{ downloadPdf }}" style="gap:8px">
+      <button class="btn btn-secondary hdr-btn" onClick="{{ downloadPdf }}" style="gap:8px">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-        Download PDF
+        <span class="hdr-label">Download PDF</span>
       </button>
-      <button class="btn btn-primary no-print" onClick="{{ copyEmail }}" style="justify-content:flex-start;gap:8px;min-width:172px">{{ copyLabel }}</button>
+      <button class="btn btn-primary hdr-btn" onClick="{{ copyEmail }}" style="justify-content:flex-start;gap:8px;min-width:172px">
+        <sc-if value="{{ notCopied }}"><svg class="hdr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></sc-if>
+        <sc-if value="{{ copied }}"><svg class="hdr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></sc-if>
+        <span class="hdr-label">{{ copyLabel }}</span>
+      </button>
     </div>
   </header>
 
@@ -389,6 +404,8 @@ class Component extends DCLogic {
     return {
       progress: this.state.progress,
       copyLabel: this.state.copied ? 'Copied to clipboard' : 'Copy email address',
+      copied: this.state.copied,
+      notCopied: !this.state.copied,
       copyEmail: this.copyEmail,
       downloadPdf: this.downloadPdf,
       showTechTags: this.props.showTechTags ?? true,
