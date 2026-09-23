@@ -11,6 +11,7 @@
 <title>Marcus Lindwall — Senior Software Developer</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
 <script src="bundle.js"></script>
 <style>
   html { scroll-behavior: smooth; }
@@ -18,14 +19,20 @@
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent); }
   ::selection { background: var(--color-accent-200); }
+  :root { --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .tag.tag-token {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0; padding: 4px 9px;
+    color: var(--color-accent-700); background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
 
   .btn .hdr-icon { display: none; }
-  @media (max-width: 839px) {
-    .btn.hdr-btn { min-width: 0 !important; width: 38px; height: 38px; padding: 0; justify-content: center !important; }
+  @media (max-width: 859px) {
+    .btn.hdr-btn { position: relative; min-width: 0 !important; width: 38px; height: 38px; padding: 0; justify-content: center !important; }
     .btn .hdr-icon { display: block; }
     .hdr-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   }
-  @media (max-width: 579px) {
+  @media (max-width: 599px) {
     .hdr { padding-top: 10px !important; padding-bottom: 10px !important; gap: 10px 12px !important; }
     .hdr-nav { order: 3; flex-basis: 100%; }
   }
@@ -49,7 +56,8 @@
     article { gap: 8px 28px !important; padding: 12px 0 !important; }
     article > div:first-child { flex: 0 0 160px !important; }
     article > div:first-child p { font-size: 13px !important; }
-    .tagrow { break-inside: avoid-page; }
+    .tagrow { break-inside: avoid-page; break-before: avoid-page; }
+    .tag.tag-token { font-size: 11px; padding: 2px 7px; }
 
     h1, h2, h3, h4 { break-after: avoid-page; }
     h3 { font-size: 20px !important; }
@@ -87,11 +95,11 @@
   </header>
 
   <section id="top" style="max-width:1040px;margin:0 auto;padding:72px 28px 56px">
-    <p style="font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Senior Software Developer · Stockholm</p>
+    <p style="font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Senior Software Developer · Stockholm</p>
     <h1 style="font-size:clamp(46px,8.5vw,92px);line-height:0.96;letter-spacing:-0.035em;margin:0 0 28px;max-width:14ch">Marcus Lindwall</h1>
     <p style="font-size:20px;line-height:1.45;max-width:62ch;margin:0 0 20px;text-wrap:pretty">Nine years building backend systems for large organisations, seven of them at Volvo Cars in Electrification — most of that in public charging, and more recently in home energy management.</p>
     <p class="no-print" style="font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 36px;color:var(--color-neutral-800);text-wrap:pretty">I care about code that is still readable and safe to change years after it ships, and I use AI tooling to get there faster without giving that up. I look for product spaces with real stakes — work where the outcome is worth the engineering.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--color-neutral-700);border-top:2px solid var(--color-divider);padding-top:18px">
+    <div style="font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--color-neutral-700);border-top:2px solid var(--color-divider);padding-top:18px">
       <a href="mailto:marcus@lindwall.info" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><rect width="20" height="16" x="2" y="4"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>marcus@lindwall.info</a>
       <a href="https://www.linkedin.com/in/marcus-lindwall-ba0678111" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>linkedin.com/in/marcus-lindwall</a>
       <a href="https://github.com/mlindwal" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 5-2 5-5.5a5.6 5.6 0 0 0-1.5-4c.3-1 .3-2 0-3 0 0-1 0-3 1.5-2.6-.5-5.4-.5-8 0C4.5 2 3.5 2 3.5 2c-.3 1-.3 2 0 3A5.6 5.6 0 0 0 2 9c0 3.5 2 5.5 5 5.5-.4.5-.7 1.1-.9 1.8s-.2 1.4-.1 2.1v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>github.com/mlindwal</a>
@@ -101,8 +109,8 @@
 
   <section id="approach" class="no-print" style="max-width:1040px;margin:0 auto;padding:0 28px 64px;scroll-margin-top:80px">
     <div style="display:flex;align-items:baseline;gap:14px;border-top:2px solid var(--color-divider);padding-top:16px;margin-bottom:28px">
-      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">01</span></sc-if>
-      <h2 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin:0;font-weight:600">Approach</h2>
+      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-mono);font-weight:700;font-size:13px;color:var(--color-accent)">01</span></sc-if>
+      <h2 style="font-family:var(--font-mono);font-size:13px;letter-spacing:0.02em;text-transform:uppercase;margin:0;font-weight:700">Approach</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 36px">
       <div style="border-top:2px solid var(--color-divider);padding:16px 0 26px">
@@ -122,14 +130,14 @@
 
   <section id="experience" style="max-width:1040px;margin:0 auto;padding:0 28px 64px;scroll-margin-top:80px">
     <div style="display:flex;align-items:baseline;gap:14px;border-top:2px solid var(--color-divider);padding-top:16px;margin-bottom:8px">
-      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">02</span></sc-if>
-      <h2 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin:0;font-weight:600">Experience</h2>
+      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-mono);font-weight:700;font-size:13px;color:var(--color-accent)">02</span></sc-if>
+      <h2 style="font-family:var(--font-mono);font-size:13px;letter-spacing:0.02em;text-transform:uppercase;margin:0;font-weight:700">Experience</h2>
     </div>
 
     <article style="display:flex;flex-wrap:wrap;gap:8px 40px;padding:32px 0;border-bottom:1px solid var(--color-divider)">
       <div style="flex:0 0 200px">
-        <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0 0 4px">Sep 2023 — Present</p>
-        <p style="font-size:14px;margin:0;color:var(--color-neutral-700)">Volvo Cars AB<br>Stockholm</p>
+        <p style="font-family:var(--font-mono);font-weight:700;font-size:13.5px;margin:0 0 4px">Sep 2023 — Present</p>
+        <p style="font-family:var(--font-mono);font-size:14px;margin:0;color:var(--color-neutral-700)">Volvo Cars AB<br>Stockholm</p>
       </div>
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Senior Software Developer</h3>
@@ -137,30 +145,30 @@
         <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Home Energy Management</h4>
-            <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2025 — Present</span>
+            <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700)">2025 — Present</span>
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Designing and building the backend services that onboard and model a customer's energy assets — vehicles, charging locations and wallbox equipment mapped to physical sites.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Helped deliver a year of free home charging for eligible cars, built with Vattenfall — over 1,000 customers have claimed it so far.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Consolidated eligibility and access rules that had been scattered across the codebase into one predictable funnel — logic that can now be reasoned about, tested and changed safely.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Designing and building the backend services that onboard and model a customer's energy assets — vehicles, charging locations and wallbox equipment mapped to physical sites.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Helped deliver a year of free home charging for eligible cars, built with Vattenfall — over 1,000 customers have claimed it so far.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Consolidated eligibility and access rules that had been scattered across the codebase into one predictable funnel — logic that can now be reasoned about, tested and changed safely.</span></li>
           </ul>
         </div>
         <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Public Charging</h4>
-            <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2023 — 2025</span>
+            <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700)">2023 — 2025</span>
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Promoted to senior while continuing to own the public charging services — architecture, implementation and production support.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Onboarded Digital Charging Solutions as the replacement charging provider, building out the new integration through 2023 while keeping the outgoing service running for existing customers, then coordinating the cutover at launch that November.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Moved the services off an ageing AWS Kubernetes cluster onto a new Azure-hosted one.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Migrated the services from Dropwizard to Spring Boot, onto the organisation’s standard stack.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Promoted to senior while continuing to own the public charging services — architecture, implementation and production support.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Onboarded Digital Charging Solutions as the replacement charging provider, building out the new integration through 2023 while keeping the outgoing service running for existing customers, then coordinating the cutover at launch that November.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Moved the services off an ageing AWS Kubernetes cluster onto a new Azure-hosted one.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Migrated the services from Dropwizard to Spring Boot, onto the organisation’s standard stack.</span></li>
           </ul>
         </div>
         <p style="font-size:14px;line-height:1.55;margin:0 0 16px;color:var(--color-neutral-700)">Services run in Docker and Kubernetes on Azure, with PostgreSQL for persistence.</p>
         <sc-if value="{{ showTechTags }}" hint-placeholder-val="{{ true }}">
         <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
-          <span class="tag tag-outline">Java</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">Kafka</span><span class="tag tag-outline">Kubernetes</span><span class="tag tag-outline">Azure</span><span class="tag tag-outline">AWS</span><span class="tag tag-outline">PostgreSQL</span><span class="tag tag-outline">Docker</span>
+          <span class="tag tag-token">Java</span><span class="tag tag-token">Spring Boot</span><span class="tag tag-token">Kafka</span><span class="tag tag-token">Kubernetes</span><span class="tag tag-token">Azure</span><span class="tag tag-token">AWS</span><span class="tag tag-token">PostgreSQL</span><span class="tag tag-token">Docker</span>
         </div>
         </sc-if>
       </div>
@@ -168,8 +176,8 @@
 
     <article style="display:flex;flex-wrap:wrap;gap:8px 40px;padding:32px 0;border-bottom:1px solid var(--color-divider)">
       <div style="flex:0 0 200px">
-        <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0 0 4px">Mar 2019 — Sep 2023</p>
-        <p style="font-size:14px;margin:0;color:var(--color-neutral-700)">Volvo Cars AB<br>Stockholm</p>
+        <p style="font-family:var(--font-mono);font-weight:700;font-size:13.5px;margin:0 0 4px">Mar 2019 — Sep 2023</p>
+        <p style="font-family:var(--font-mono);font-size:14px;margin:0;color:var(--color-neutral-700)">Volvo Cars AB<br>Stockholm</p>
       </div>
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Software Developer</h3>
@@ -177,29 +185,29 @@
         <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Public charging in the Volvo app</h4>
-            <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2020 — 2023</span>
+            <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700)">2020 — 2023</span>
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Delivered the first native public charging experience in the Volvo Cars app, built with Plugsurfing as launch partner on their new Drive partner API and informing the contract as its first consumer.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Shipped in May 2022 after eighteen months of development; around 60,000 drivers registered for the service through the app over its lifespan.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Built an internal CMS in React and Next.js so app developers and QA engineers could manage test conditions on their own, with a REST API behind it that let QA drive those conditions from their automated suites.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Delivered the first native public charging experience in the Volvo Cars app, built with Plugsurfing as launch partner on their new Drive partner API and informing the contract as its first consumer.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Shipped in May 2022 after eighteen months of development; around 60,000 drivers registered for the service through the app over its lifespan.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Built an internal CMS in React and Next.js so app developers and QA engineers could manage test conditions on their own, with a REST API behind it that let QA drive those conditions from their automated suites.</span></li>
           </ul>
         </div>
         <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
           <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px">
             <h4 style="font-size:18px;letter-spacing:-0.015em;margin:0">Recharge</h4>
-            <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-neutral-700)">2019 — 2021</span>
+            <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700)">2019 — 2021</span>
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Owned the backend behind a time-limited charging offer bundled with a PHEV purchase — the coordination layer between the mobile app and downstream charging and payment services.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Handled eligibility, consent and the full offer lifecycle, through to a secured reimbursement flow at the end of the offer period — around 43,000 customers registered.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Supported the offer through to close, backing customer care on claims and handling late registrations so no eligible customer lost their reimbursement.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Owned the backend behind a time-limited charging offer bundled with a PHEV purchase — the coordination layer between the mobile app and downstream charging and payment services.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Handled eligibility, consent and the full offer lifecycle, through to a secured reimbursement flow at the end of the offer period — around 43,000 customers registered.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Supported the offer through to close, backing customer care on claims and handling late registrations so no eligible customer lost their reimbursement.</span></li>
           </ul>
         </div>
         <p style="font-size:14px;line-height:1.55;margin:0 0 16px;color:var(--color-neutral-700)">Services ran in Docker and Kubernetes on AWS, on a mix of Spring Boot and Dropwizard.</p>
         <sc-if value="{{ showTechTags }}" hint-placeholder-val="{{ true }}">
         <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
-          <span class="tag tag-outline">Java</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">Dropwizard</span><span class="tag tag-outline">Kubernetes</span><span class="tag tag-outline">AWS</span><span class="tag tag-outline">PostgreSQL</span><span class="tag tag-outline">React</span>
+          <span class="tag tag-token">Java</span><span class="tag tag-token">Spring Boot</span><span class="tag tag-token">Dropwizard</span><span class="tag tag-token">Kubernetes</span><span class="tag tag-token">AWS</span><span class="tag tag-token">PostgreSQL</span><span class="tag tag-token">React</span>
         </div>
         </sc-if>
       </div>
@@ -207,21 +215,21 @@
 
     <article style="display:flex;flex-wrap:wrap;gap:8px 40px;padding:32px 0;border-bottom:1px solid var(--color-divider)">
       <div style="flex:0 0 200px">
-        <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0 0 4px">Jun 2017 — Feb 2019</p>
-        <p style="font-size:14px;margin:0;color:var(--color-neutral-700)">Com Hem AB<br>Stockholm</p>
+        <p style="font-family:var(--font-mono);font-weight:700;font-size:13.5px;margin:0 0 4px">Jun 2017 — Feb 2019</p>
+        <p style="font-family:var(--font-mono);font-size:14px;margin:0;color:var(--color-neutral-700)">Com Hem AB<br>Stockholm</p>
       </div>
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 4px">Software Developer</h3>
         <p style="font-size:14px;margin:0 0 18px;color:var(--color-accent-700)">Service Activation &amp; Feasibility</p>
         <ul style="list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:10px">
-          <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Worked on service activation and feasibility — the systems that decide whether a physical address can be connected to the ISP network.</span></li>
-          <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Built backend features in Java and Kotlin on Spring Boot, processing address data at national scale as the basis for those feasibility decisions.</span></li>
-          <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Contributed frontend work in React, primarily internal administrative tools and data overviews.</span></li>
-          <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Started via a talent programme, rotating across domains and spending time with customer care and field service — useful grounding for systems whose output ends in a physical install.</span></li>
+          <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Worked on service activation and feasibility — the systems that decide whether a physical address can be connected to the ISP network.</span></li>
+          <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Built backend features in Java and Kotlin on Spring Boot, processing address data at national scale as the basis for those feasibility decisions.</span></li>
+          <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Contributed frontend work in React, primarily internal administrative tools and data overviews.</span></li>
+          <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Started via a talent programme, rotating across domains and spending time with customer care and field service — useful grounding for systems whose output ends in a physical install.</span></li>
         </ul>
         <sc-if value="{{ showTechTags }}" hint-placeholder-val="{{ true }}">
         <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
-          <span class="tag tag-outline">Java</span><span class="tag tag-outline">Kotlin</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">SQL</span><span class="tag tag-outline">React</span>
+          <span class="tag tag-token">Java</span><span class="tag tag-token">Kotlin</span><span class="tag tag-token">Spring Boot</span><span class="tag tag-token">SQL</span><span class="tag tag-token">React</span>
         </div>
         </sc-if>
       </div>
@@ -229,14 +237,14 @@
 
     <article style="display:flex;flex-wrap:wrap;gap:8px 40px;padding:32px 0">
       <div style="flex:0 0 200px">
-        <p style="font-family:var(--font-heading);font-weight:800;font-size:15px;margin:0 0 4px">Feb 2017 — May 2017</p>
-        <p style="font-size:14px;margin:0;color:var(--color-neutral-700)">Softronic<br>Stockholm</p>
+        <p style="font-family:var(--font-mono);font-weight:700;font-size:13.5px;margin:0 0 4px">Feb 2017 — May 2017</p>
+        <p style="font-family:var(--font-mono);font-size:14px;margin:0;color:var(--color-neutral-700)">Softronic<br>Stockholm</p>
       </div>
       <div style="flex:1 1 380px;min-width:0">
         <h3 style="font-size:26px;letter-spacing:-0.02em;margin:0 0 12px">Software Developer, Intern</h3>
         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-          <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Worked backend and frontend on a white-label travel booking service, on a legacy Java 6 and Spring Boot codebase.</span></li>
-          <li style="display:grid;grid-template-columns:18px 1fr;font-size:15px;line-height:1.55"><span style="color:var(--color-accent)">—</span><span>Integrated a JavaScript PDF viewer into the booking UI, letting agents read and print travel documents without downloading files or leaving the flow.</span></li>
+          <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Worked backend and frontend on a white-label travel booking service, on a legacy Java 6 and Spring Boot codebase.</span></li>
+          <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Integrated a JavaScript PDF viewer into the booking UI, letting agents read and print travel documents without downloading files or leaving the flow.</span></li>
         </ul>
       </div>
     </article>
@@ -244,35 +252,35 @@
 
   <section id="skills" style="max-width:1040px;margin:0 auto;padding:0 28px 72px;scroll-margin-top:80px">
     <div style="display:flex;align-items:baseline;gap:14px;border-top:2px solid var(--color-divider);padding-top:16px;margin-bottom:28px">
-      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent)">03</span></sc-if>
-      <h2 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;margin:0;font-weight:600">Skills</h2>
+      <sc-if value="{{ sectionNumbers }}" hint-placeholder-val="{{ true }}"><span class="secnum" style="font-family:var(--font-mono);font-weight:700;font-size:13px;color:var(--color-accent)">03</span></sc-if>
+      <h2 style="font-family:var(--font-mono);font-size:13px;letter-spacing:0.02em;text-transform:uppercase;margin:0;font-weight:700">Skills</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 32px">
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
-        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Languages</p>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Languages</p>
         <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Java · JavaScript · Kotlin</p>
-        <p style="font-size:13px;margin:8px 0 0;color:var(--color-neutral-700)">Exploring Python, Go, Zig</p>
+        <p style="font-family:var(--font-mono);font-size:13px;margin:8px 0 0;color:var(--color-neutral-700)">Exploring Python, Go, Zig</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
-        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Backend</p>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Backend</p>
         <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Spring Boot · Dropwizard · Kafka</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
-        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Data</p>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Data</p>
         <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">PostgreSQL · Redis · Oracle SQL</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
-        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Infrastructure</p>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Infrastructure</p>
         <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Docker · Kubernetes · Azure · AWS</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
-        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Frontend</p>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Frontend</p>
         <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">React · Next.js</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
-        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Education</p>
+        <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Education</p>
         <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Java Software Development</p>
-        <p style="font-size:13px;margin:8px 0 0;color:var(--color-neutral-700)">Teknikhögskolan Liljeholmen, 2015—2017</p>
+        <p style="font-family:var(--font-mono);font-size:13px;margin:8px 0 0;color:var(--color-neutral-700)">Teknikhögskolan Liljeholmen, 2015—2017</p>
       </div>
     </div>
   </section>
@@ -377,7 +385,8 @@ class Component extends DCLogic {
   navStyle(id) {
     const on = this.state.active === id;
     return {
-      fontSize: '14px',
+      fontFamily: 'var(--font-mono)',
+      fontSize: '13px',
       color: on ? 'var(--color-accent)' : 'var(--color-text)',
       paddingBottom: '3px',
       borderBottom: on ? '2px solid var(--color-accent)' : '2px solid transparent',
