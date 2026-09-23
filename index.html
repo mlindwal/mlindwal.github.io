@@ -383,15 +383,32 @@
     name.replaceChildren(label, typed);
     name.classList.add('typing');
 
-    // Like a terminal losing focus: blink only while the page sits at the top.
-    const syncBlink = () => cursor.classList.toggle('blink', window.scrollY < 10);
+    // Like a terminal losing focus: blink until the sticky header reaches the tallest letter.
+    const header = document.querySelector('header');
+    const firstLetter = document.createRange();
+    const ruler = document.createElement('canvas').getContext('2d');
+    let blinkFrame = 0;
+    const syncBlink = () => {
+      if (blinkFrame) return;
+      blinkFrame = requestAnimationFrame(() => {
+        blinkFrame = 0;
+        const style = getComputedStyle(name);
+        ruler.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        const m = ruler.measureText(text);
+        const inkTop = firstLetter.getBoundingClientRect().top + m.fontBoundingBoxAscent - m.actualBoundingBoxAscent;
+        cursor.classList.toggle('blink', inkTop > header.getBoundingClientRect().bottom);
+      });
+    };
     let i = 0;
     const typeNext = () => {
       if (i === letters.length) {
         name.classList.remove('typing');
         name.replaceChildren(text, cursor);
+        firstLetter.setStart(name.firstChild, 0);
+        firstLetter.setEnd(name.firstChild, 1);
         syncBlink();
         window.addEventListener('scroll', syncBlink, { passive: true });
+        window.addEventListener('resize', syncBlink);
         return;
       }
       const letter = letters[i++];
