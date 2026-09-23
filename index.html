@@ -35,6 +35,27 @@
     --color-accent-800: oklch(0.32 0.216751 264.667);
     --color-accent-2-800: oklch(0.32 0.216751 264.667);
   }
+  /* Screen only: print keeps the light palette even when the system is dark. Accent splits in two here:
+     text uses a lighter blue to read on the dark background, while fills under white text keep the brand blue. */
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --color-bg: #141313;
+      --color-surface: #1c1b1b;
+      --color-text: #ecebea;
+      --color-divider: color-mix(in srgb, #ecebea 30%, transparent);
+      --color-neutral-600: #8a8686;
+      --color-neutral-700: #aaa6a6;
+      --color-neutral-800: #cfcbcb;
+      --color-accent: oklch(0.72 0.15 264.667);
+      --color-accent-700: oklch(0.83 0.09 264.667);
+    }
+    ::selection { background: oklch(0.42 0.14 264.667); }
+    .btn-primary { background: #1f4ed8; color: #f3f2f2; }
+    .btn-primary:hover { background: oklch(0.55 0.2 264.667); }
+    footer { background: #1f4ed8 !important; }
+    .tag.tag-token { background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
+  }
   :root { --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
   .tag.tag-token {
     font-family: var(--font-mono); font-size: 12px; letter-spacing: 0; padding: 4px 9px;
