@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marcus Lindwall — Senior Software Developer</title>
+<meta name="description" content="Senior software developer in Stockholm, building backend systems since 2017. Most of that time at Volvo Cars, on public charging and home energy management.">
+<link rel="canonical" href="https://lindwall.info/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lindwall.info/">
+<meta property="og:title" content="Marcus Lindwall — Senior Software Developer">
+<meta property="og:description" content="Senior software developer in Stockholm, building backend systems since 2017. Most of that time at Volvo Cars, on public charging and home energy management.">
+<meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
@@ -44,6 +51,15 @@
   footer a:hover { color: var(--color-accent-200) !important; }
 
   .btn[data-copied] .icon-mail, .btn:not([data-copied]) .icon-check { display: none; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 36px; max-width: 780px; margin: 28px 0 36px; }
+  .stat-num { font-family: var(--font-mono); font-weight: 700; font-size: 36px; letter-spacing: -0.03em; line-height: 1; color: var(--color-accent); margin: 0 0 8px; }
+  .stat-label { font-size: 14px; line-height: 1.45; color: var(--color-neutral-700); margin: 0; }
+  @media (max-width: 599px) {
+    .stats { grid-template-columns: 1fr; gap: 12px; }
+    .stats > div { display: grid; grid-template-columns: 112px 1fr; gap: 14px; align-items: baseline; }
+    .stat-num { font-size: 24px; margin: 0; }
+  }
 
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .typing .pending { visibility: hidden; }
@@ -88,9 +104,14 @@
     article > div:first-child { flex: 0 0 160px !important; }
     article > div:first-child p { font-size: 13px !important; }
     .tagrow { break-inside: avoid-page; break-before: avoid-page; }
-    .tag.tag-token { font-size: 11px; padding: 2px 7px; }
+    .tag.tag-token { font-size: 11px; padding: 2px 6px; }
+    .tagrow { gap: 4px !important; }
+    .stats { margin: 12px 0 14px; gap: 8px 24px; }
+    .stat-num { font-size: 20px; margin: 0 0 3px; }
+    .stat-label { font-size: 10.5px; line-height: 1.35; }
 
     h1, h2, h3, h4 { break-after: avoid-page; }
+    h3 + p { break-after: avoid-page; }
     h3 { font-size: 20px !important; }
     h4 { font-size: 15px !important; }
     .no-break { break-inside: avoid-page; padding-top: 8px !important; margin-bottom: 10px !important; }
@@ -130,7 +151,11 @@
     <p style="font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Senior Software Developer · Stockholm</p>
     <h1 id="name" style="font-size:clamp(46px,8.5vw,92px);line-height:0.96;letter-spacing:-0.035em;margin:0 0 28px;max-width:14ch">Marcus Lindwall</h1>
     <p style="font-size:20px;line-height:1.45;max-width:62ch;margin:0 0 20px;text-wrap:pretty">Nine years building backend systems for large organisations, seven of them at Volvo Cars in Electrification — most of that in public charging, and more recently in home energy management.</p>
-    <p class="no-print" style="font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 36px;color:var(--color-neutral-800);text-wrap:pretty">I care about code that is still readable and safe to change years after it ships, and I use AI tooling to get there faster without giving that up. I look for product spaces with real stakes — work where the outcome is worth the engineering.</p>
+    <div class="stats">
+      <div><p class="stat-num">~60,000</p><p class="stat-label">drivers registered for public charging in the Volvo Cars app</p></div>
+      <div><p class="stat-num">~43,000</p><p class="stat-label">customers registered for Recharge, the PHEV charging offer</p></div>
+      <div><p class="stat-num">1,000+</p><p class="stat-label">customers have claimed a year of free home charging so far</p></div>
+    </div>
     <div style="font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--color-neutral-700);border-top:2px solid var(--color-divider);padding-top:18px">
       <a href="mailto:marcus@lindwall.info" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><rect width="20" height="16" x="2" y="4"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>marcus@lindwall.info</a>
       <a href="https://www.linkedin.com/in/marcus-lindwall-ba0678111" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>linkedin.com/in/marcus-lindwall</a>
@@ -147,15 +172,15 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 36px">
       <div style="border-top:2px solid var(--color-divider);padding:16px 0 26px">
         <h3 style="font-size:22px;letter-spacing:-0.02em;margin:0 0 12px">Maintainable by default</h3>
-        <p style="font-size:15px;line-height:1.6;margin:0;color:var(--color-neutral-800);text-wrap:pretty">Services owned end to end — data model, API contract, deployment, observability. Written so the next engineer can change them without fear.</p>
+        <p style="font-size:15px;line-height:1.6;margin:0;color:var(--color-neutral-800);text-wrap:pretty">Services owned end to end: data model, API contract, deployment, observability. Written so the next engineer can change them without fear.</p>
       </div>
       <div style="border-top:2px solid var(--color-divider);padding:16px 0 26px">
         <h3 style="font-size:22px;letter-spacing:-0.02em;margin:0 0 12px">AI-accelerated, not AI-authored</h3>
         <p style="font-size:15px;line-height:1.6;margin:0;color:var(--color-neutral-800);text-wrap:pretty">AI tooling carries the mechanical work and shortens the loop. Architecture, trade-offs and review stay a human responsibility.</p>
       </div>
       <div style="border-top:2px solid var(--color-divider);padding:16px 0 26px">
-        <h3 style="font-size:22px;letter-spacing:-0.02em;margin:0 0 12px">What I look for</h3>
-        <p style="font-size:15px;line-height:1.6;margin:0;color:var(--color-neutral-800);text-wrap:pretty">Challenging domains with real impact, at whatever scale. Most recently vehicle electrification — energy optimisation at home, and public charging on the road.</p>
+        <h3 style="font-size:22px;letter-spacing:-0.02em;margin:0 0 12px">Where I do my best work</h3>
+        <p style="font-size:15px;line-height:1.6;margin:0;color:var(--color-neutral-800);text-wrap:pretty">Challenging domains with real impact, at whatever scale. Most recently vehicle electrification: energy optimisation at home and public charging on the road.</p>
       </div>
     </div>
   </section>
@@ -180,9 +205,9 @@
             <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700)">2025 — Present</span>
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Designing and building the backend services that onboard and model a customer's energy assets — vehicles, charging locations and wallbox equipment mapped to physical sites.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Helped deliver a year of free home charging for eligible cars, built with Vattenfall — over 1,000 customers have claimed it so far.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Consolidated eligibility and access rules that had been scattered across the codebase into one predictable funnel — logic that can now be reasoned about, tested and changed safely.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Designing and building the backend services that onboard and model a customer's energy assets (vehicles, charging locations and wallbox equipment) mapped to physical sites.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Helped deliver a year of free home charging for eligible cars, built with Vattenfall. Over 1,000 customers have claimed it so far.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Consolidated eligibility and access rules that had been scattered across the codebase into one predictable funnel, so the logic can now be reasoned about, tested and changed safely.</span></li>
           </ul>
         </div>
         <div class="no-break" style="border-top:1px solid var(--color-divider);padding-top:14px;margin-bottom:22px">
@@ -191,13 +216,12 @@
             <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700)">2023 — 2025</span>
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
-            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Promoted to senior while continuing to own the public charging services — architecture, implementation and production support.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Promoted to senior while continuing to own the public charging services: architecture, implementation and production support.</span></li>
             <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Onboarded Digital Charging Solutions as the replacement charging provider, building out the new integration through 2023 while keeping the outgoing service running for existing customers, then coordinating the cutover at launch that November.</span></li>
             <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Moved the services off an ageing AWS Kubernetes cluster onto a new Azure-hosted one.</span></li>
             <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Migrated the services from Dropwizard to Spring Boot, onto the organisation’s standard stack.</span></li>
           </ul>
         </div>
-        <p style="font-size:14px;line-height:1.55;margin:0 0 16px;color:var(--color-neutral-700)">Services run in Docker and Kubernetes on Azure, with PostgreSQL for persistence.</p>
         <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
           <span class="tag tag-token">Java</span><span class="tag tag-token">Spring Boot</span><span class="tag tag-token">Kafka</span><span class="tag tag-token">Kubernetes</span><span class="tag tag-token">Azure</span><span class="tag tag-token">AWS</span><span class="tag tag-token">PostgreSQL</span><span class="tag tag-token">Docker</span>
         </div>
@@ -230,13 +254,12 @@
           </div>
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
             <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Owned the backend behind a time-limited charging offer bundled with a PHEV purchase — the coordination layer between the mobile app and downstream charging and payment services.</span></li>
-            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Handled eligibility, consent and the full offer lifecycle, through to a secured reimbursement flow at the end of the offer period — around 43,000 customers registered.</span></li>
+            <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Handled eligibility, consent and the full offer lifecycle, through to a secured reimbursement flow at the end of the offer period. Around 43,000 customers registered.</span></li>
             <li style="display:grid;grid-template-columns:18px 1fr;font-family:var(--font-mono);font-size:14px;line-height:1.6"><span style="color:var(--color-accent)">—</span><span>Supported the offer through to close, backing customer care on claims and handling late registrations so no eligible customer lost their reimbursement.</span></li>
           </ul>
         </div>
-        <p style="font-size:14px;line-height:1.55;margin:0 0 16px;color:var(--color-neutral-700)">Services ran in Docker and Kubernetes on AWS, on a mix of Spring Boot and Dropwizard.</p>
         <div class="tagrow" style="display:flex;flex-wrap:wrap;gap:6px">
-          <span class="tag tag-token">Java</span><span class="tag tag-token">Spring Boot</span><span class="tag tag-token">Dropwizard</span><span class="tag tag-token">Kubernetes</span><span class="tag tag-token">AWS</span><span class="tag tag-token">PostgreSQL</span><span class="tag tag-token">React</span>
+          <span class="tag tag-token">Java</span><span class="tag tag-token">Spring Boot</span><span class="tag tag-token">Dropwizard</span><span class="tag tag-token">Kubernetes</span><span class="tag tag-token">AWS</span><span class="tag tag-token">PostgreSQL</span><span class="tag tag-token">Docker</span><span class="tag tag-token">React</span>
         </div>
       </div>
     </article>
@@ -284,24 +307,24 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 32px">
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
         <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Languages</p>
-        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Java · JavaScript · Kotlin</p>
+        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Java&nbsp;· JavaScript&nbsp;· Kotlin</p>
         <p style="font-family:var(--font-mono);font-size:13px;margin:8px 0 0;color:var(--color-neutral-700)">Exploring Python, Go, Zig</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
         <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Backend</p>
-        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Spring Boot · Dropwizard · Kafka</p>
+        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Spring&nbsp;Boot&nbsp;· Dropwizard&nbsp;· Kafka</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
         <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Data</p>
-        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">PostgreSQL · Redis · Oracle SQL</p>
+        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">PostgreSQL&nbsp;· Redis&nbsp;· Oracle&nbsp;SQL</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
         <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Infrastructure</p>
-        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Docker · Kubernetes · Azure · AWS</p>
+        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">Docker&nbsp;· Kubernetes&nbsp;· Azure&nbsp;· AWS</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
         <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Frontend</p>
-        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">React · Next.js</p>
+        <p style="font-size:17px;line-height:1.45;margin:0;font-family:var(--font-heading);font-weight:600">React&nbsp;· Next.js</p>
       </div>
       <div style="border-top:1px solid var(--color-divider);padding:14px 0 24px">
         <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-neutral-700);margin:0 0 10px">Education</p>
