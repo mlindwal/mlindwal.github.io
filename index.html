@@ -44,6 +44,19 @@
   footer a:hover { color: var(--color-accent-200) !important; }
 
   .btn[data-copied] .icon-mail, .btn:not([data-copied]) .icon-check { display: none; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .typing .pending { visibility: hidden; }
+  /* Zero-width with the block drawn absolutely, so moving it never reflows or rewraps the name. */
+  .cursor { position: relative; }
+  .cursor::after {
+    content: ""; position: absolute; left: 0.06em; width: 0.42em;
+    top: 0.184em; height: 0.696em; /* baseline to cap height, from Archivo's ascent and cap height */
+    background: var(--color-accent);
+  }
+  .cursor.blink::after { animation: cursor-blink 1.1s steps(1, end) infinite; }
+  @keyframes cursor-blink { 50% { opacity: 0; } }
+
   @media (max-width: 879px) {
     .btn.hdr-btn { position: relative; min-width: 0 !important; width: 38px; height: 38px; padding: 0; justify-content: center !important; }
     .hdr-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -55,6 +68,8 @@
 
   @media print {
     .no-print { display: none !important; }
+    .typing .pending { visibility: visible !important; }
+    .cursor { display: none; }
     html, body { background: #fff; }
     .shell { background: #fff !important; min-height: 0 !important; counter-reset: sec; }
     @page { margin: 12mm; }
@@ -111,9 +126,9 @@
     </div>
   </header>
 
-  <section id="top" style="max-width:1040px;margin:0 auto;padding:72px 28px 56px">
+  <section id="top" style="max-width:1040px;margin:0 auto;padding:72px 28px 56px;scroll-margin-top:80px">
     <p style="font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Senior Software Developer · Stockholm</p>
-    <h1 style="font-size:clamp(46px,8.5vw,92px);line-height:0.96;letter-spacing:-0.035em;margin:0 0 28px;max-width:14ch">Marcus Lindwall</h1>
+    <h1 id="name" style="font-size:clamp(46px,8.5vw,92px);line-height:0.96;letter-spacing:-0.035em;margin:0 0 28px;max-width:14ch">Marcus Lindwall</h1>
     <p style="font-size:20px;line-height:1.45;max-width:62ch;margin:0 0 20px;text-wrap:pretty">Nine years building backend systems for large organisations, seven of them at Volvo Cars in Electrification — most of that in public charging, and more recently in home energy management.</p>
     <p class="no-print" style="font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 36px;color:var(--color-neutral-800);text-wrap:pretty">I care about code that is still readable and safe to change years after it ships, and I use AI tooling to get there faster without giving that up. I look for product spaces with real stakes — work where the outcome is worth the engineering.</p>
     <div style="font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14px;color:var(--color-neutral-700);border-top:2px solid var(--color-divider);padding-top:18px">
@@ -344,6 +359,65 @@
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
   measure();
+
+  const name = document.getElementById('name');
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    name.append(cursor);
+  } else {
+    const text = name.textContent;
+    const letters = [...text].map(ch => {
+      const span = document.createElement('span');
+      span.className = 'pending';
+      span.textContent = ch;
+      return span;
+    });
+    const typed = document.createElement('span');
+    typed.setAttribute('aria-hidden', 'true');
+    typed.append(cursor, ...letters);
+    const label = document.createElement('span');
+    label.className = 'sr-only';
+    label.textContent = text;
+    name.replaceChildren(label, typed);
+    name.classList.add('typing');
+
+    // Like a terminal losing focus: blink until the sticky header reaches the tallest letter.
+    const header = document.querySelector('header');
+    const firstLetter = document.createRange();
+    const ruler = document.createElement('canvas').getContext('2d');
+    let blinkFrame = 0;
+    const syncBlink = () => {
+      if (blinkFrame) return;
+      blinkFrame = requestAnimationFrame(() => {
+        blinkFrame = 0;
+        const style = getComputedStyle(name);
+        ruler.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+        const m = ruler.measureText(text);
+        const inkTop = firstLetter.getBoundingClientRect().top + m.fontBoundingBoxAscent - m.actualBoundingBoxAscent;
+        cursor.classList.toggle('blink', inkTop > header.getBoundingClientRect().bottom);
+      });
+    };
+    let i = 0;
+    const typeNext = () => {
+      if (i === letters.length) {
+        name.classList.remove('typing');
+        name.replaceChildren(text, cursor);
+        firstLetter.setStart(name.firstChild, 0);
+        firstLetter.setEnd(name.firstChild, 1);
+        syncBlink();
+        window.addEventListener('scroll', syncBlink, { passive: true });
+        window.addEventListener('resize', syncBlink);
+        return;
+      }
+      const letter = letters[i++];
+      letter.classList.remove('pending');
+      letter.after(cursor);
+      setTimeout(typeNext, 55 + Math.random() * 70 + (letter.textContent === ' ' ? 90 : 0));
+    };
+    setTimeout(typeNext, 350);
+  }
 
   document.getElementById('download-pdf').addEventListener('click', () => window.print());
 
