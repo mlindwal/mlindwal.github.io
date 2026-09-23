@@ -54,8 +54,7 @@
     top: 0.184em; height: 0.696em; /* baseline to cap height, from Archivo's ascent and cap height */
     background: var(--color-accent);
   }
-  /* Four blinks stays under the 5 s limit in WCAG 2.2.2, then the cursor holds steady. */
-  .cursor.blink::after { animation: cursor-blink 1.1s steps(1, end) 4; }
+  .cursor.blink::after { animation: cursor-blink 1.1s steps(1, end) infinite; }
   @keyframes cursor-blink { 50% { opacity: 0; } }
 
   @media (max-width: 879px) {
@@ -127,7 +126,7 @@
     </div>
   </header>
 
-  <section id="top" style="max-width:1040px;margin:0 auto;padding:72px 28px 56px">
+  <section id="top" style="max-width:1040px;margin:0 auto;padding:72px 28px 56px;scroll-margin-top:80px">
     <p style="font-family:var(--font-mono);font-weight:700;font-size:12px;letter-spacing:0.02em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Senior Software Developer · Stockholm</p>
     <h1 id="name" style="font-size:clamp(46px,8.5vw,92px);line-height:0.96;letter-spacing:-0.035em;margin:0 0 28px;max-width:14ch">Marcus Lindwall</h1>
     <p style="font-size:20px;line-height:1.45;max-width:62ch;margin:0 0 20px;text-wrap:pretty">Nine years building backend systems for large organisations, seven of them at Volvo Cars in Electrification — most of that in public charging, and more recently in home energy management.</p>
@@ -384,12 +383,15 @@
     name.replaceChildren(label, typed);
     name.classList.add('typing');
 
+    // Like a terminal losing focus: blink only while the page sits at the top.
+    const syncBlink = () => cursor.classList.toggle('blink', window.scrollY < 10);
     let i = 0;
     const typeNext = () => {
       if (i === letters.length) {
         name.classList.remove('typing');
         name.replaceChildren(text, cursor);
-        cursor.classList.add('blink');
+        syncBlink();
+        window.addEventListener('scroll', syncBlink, { passive: true });
         return;
       }
       const letter = letters[i++];
