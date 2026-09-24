@@ -419,15 +419,17 @@
     name.append(cursor);
   } else {
     const text = name.textContent;
-    const letters = [...text].map(ch => {
-      const span = document.createElement('span');
-      span.className = 'pending';
-      span.textContent = ch;
-      return span;
-    });
+    const chars = [...text];
+    // Typed letters share one text node: WebKit doesn't kern across element
+    // boundaries, so per-letter spans sit wider than the final text and the
+    // name shifts left when the animation swaps them for plain text.
+    const shown = document.createTextNode('');
+    const pending = document.createElement('span');
+    pending.className = 'pending';
+    pending.textContent = text;
     const typed = document.createElement('span');
     typed.setAttribute('aria-hidden', 'true');
-    typed.append(cursor, ...letters);
+    typed.append(shown, cursor, pending);
     const label = document.createElement('span');
     label.className = 'sr-only';
     label.textContent = text;
@@ -452,7 +454,7 @@
     };
     let i = 0;
     const typeNext = () => {
-      if (i === letters.length) {
+      if (i === chars.length) {
         name.classList.remove('typing');
         name.replaceChildren(text, cursor);
         firstLetter.setStart(name.firstChild, 0);
@@ -462,10 +464,10 @@
         window.addEventListener('resize', syncBlink);
         return;
       }
-      const letter = letters[i++];
-      letter.classList.remove('pending');
-      letter.after(cursor);
-      setTimeout(typeNext, 55 + Math.random() * 70 + (letter.textContent === ' ' ? 90 : 0));
+      const ch = chars[i++];
+      shown.appendData(ch);
+      pending.textContent = chars.slice(i).join('');
+      setTimeout(typeNext, 55 + Math.random() * 70 + (ch === ' ' ? 90 : 0));
     };
     setTimeout(typeNext, 350);
   }
