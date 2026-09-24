@@ -12,10 +12,12 @@
 <meta property="og:description" content="Senior software developer in Stockholm, building backend systems since 2017. Most of that time at Volvo Cars, on public charging and home energy management.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
 <style>
-  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent); }
@@ -177,6 +179,7 @@
         <svg class="icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
         <span class="hdr-label">Copy email address</span>
       </button>
+      <span id="copy-status" class="sr-only" role="status"></span>
     </div>
   </header>
 
@@ -469,26 +472,35 @@
       pending.textContent = chars.slice(i).join('');
       setTimeout(typeNext, 55 + Math.random() * 70 + (ch === ' ' ? 90 : 0));
     };
-    setTimeout(typeNext, 350);
+    // Start once the heading face is in, so the name isn't typed in the fallback and then reflowed.
+    // The timeout keeps a slow or blocked font from holding the name back indefinitely.
+    const fontReady = document.fonts.load(`${getComputedStyle(name).fontWeight} 1em Archivo`);
+    Promise.race([fontReady, new Promise(resolve => setTimeout(resolve, 1500))])
+      .finally(() => setTimeout(typeNext, 350));
   }
 
   document.getElementById('download-pdf').addEventListener('click', () => window.print());
 
   const copyButton = document.getElementById('copy-email');
   const copyLabel = copyButton.querySelector('.hdr-label');
+  const copyStatus = document.getElementById('copy-status');
   let copyTimer;
   copyButton.addEventListener('click', () => {
-    const done = () => {
+    const copied = () => {
       copyButton.dataset.copied = '';
       copyLabel.textContent = 'Copied to clipboard';
+      copyStatus.textContent = 'Email address copied';
       clearTimeout(copyTimer);
       copyTimer = setTimeout(() => {
         delete copyButton.dataset.copied;
         copyLabel.textContent = 'Copy email address';
+        copyStatus.textContent = '';
       }, 1800);
     };
-    if (navigator.clipboard) navigator.clipboard.writeText('marcus@lindwall.info').then(done, done);
-    else done();
+    // Without clipboard access, hand the address to the mail app rather than claim a copy that didn't happen.
+    const failed = () => { location.href = 'mailto:marcus@lindwall.info'; };
+    if (navigator.clipboard) navigator.clipboard.writeText('marcus@lindwall.info').then(copied, failed);
+    else failed();
   });
 })();
 </script>
